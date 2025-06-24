@@ -3,8 +3,8 @@ function convertTimeToWords(time) {
   // TODO: real code goes here!
   const [hourStr, minuteStr] = time.split(':');
 
-  let hours = parseInt(hourStr, 10);
-  let minutes = parseInt(minuteStr, 10);
+  const hours = parseInt(hourStr, 10);
+  const minutes = parseInt(minuteStr, 10);
 
   const numbersToWords = {
     0: 'zero',
@@ -47,16 +47,16 @@ function convertTimeToWords(time) {
     return numbersToWords[60 - num];
   }
 
-  if (minutes == 0) {
-    if (hours == 0) {
+  if (minutes === 0) {
+    if (hours === 0) {
       return 'midnight';
-    } if (hours == 12) {
+    } if (hours === 12) {
       return 'midday';
     }
     return `${numbersToWords[hours % 12 || 12]} o'clock`;
-  } if (minutes == 15) {
+  } if (minutes === 15) {
     return `quarter past ${numbersToWords[hours % 12 || 12]}`;
-  } if (minutes == 30) {
+  } if (minutes === 30) {
     return `half past ${numbersToWords[hours % 12 || 12]}`;
   } if (minutes < 30) {
     return `${getNumberWord(minutes)} past ${numbersToWords[hours % 12 || 12]}`;
@@ -65,7 +65,7 @@ function convertTimeToWords(time) {
   const minutesInWords = getNumberWord(minutes);
   const nextHour = (hours + 1) % 12 || 12;
 
-  if (remainingMins == 15) {
+  if (remainingMins === 15) {
     return `quarter to ${numbersToWords[nextHour]}`;
   }
   return `${minutesInWords} to ${numbersToWords[nextHour]}`;
